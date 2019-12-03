@@ -9,7 +9,10 @@ namespace AdventOfCodeDay2
         static void Main(string[] args)
         {
             string file = "input.txt";
-            List<string> opcodes = new List<string>();
+            List<int> opcodes = new List<int>();
+            int currentPosInList = 0;
+            int temporaryPosInList = 0;
+            int positionToChange;
 
             using (var reader = new StreamReader(file))
             {
@@ -18,15 +21,35 @@ namespace AdventOfCodeDay2
 
                 for (int i = 0;  i < values.Length; i++)
                 {
-                    opcodes.Add(values[i]);
+                    opcodes.Add(Convert.ToInt32(values[i]));
                 }
             }
 
-            foreach (string i in opcodes)
+            foreach(int i in opcodes)
+            {
+
+            }
+
+            foreach (int i in opcodes)
             {
                 Console.WriteLine(i);
             }
         }
+        public int OpCodeCalculation(int addOrMult, int val1, int val2)
+        {
+            if (addOrMult == 1)
+            {
+                return val1 + val2;
+            }
+            else if (addOrMult == 2)
+            {
+                return val1 * val2;
+            }
+
+            else
+                throw new System.InvalidOperationException("Opcode sequence possibly broken, can only accept 1, 2, or 99");
+        }
     }
+
 }
 
